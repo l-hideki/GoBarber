@@ -9,6 +9,7 @@ import routes from './routes';
 // src/server.ts
 
 import '@shared/infra/typeorm';
+import '@shared/container';
 
 const app = express();
 app.use(cors());
