@@ -17,6 +17,23 @@ describe('UpdateProfile', () => {
       fakeHashProvider,
     );
   });
+  it('should not be able to update the password without old password', async () => {
+    const user = await fakeUsersRepository.create({
+      name: 'John Doe',
+      email: 'johndoe@example.com',
+      password: '123456',
+    });
+
+    await expect(
+      updateProfile.execute({
+        user_id: user.id,
+        name: 'John Trê',
+        email: 'johntre@example.com',
+        password: '123123',
+      }),
+    ).rejects.toBeInstanceOf(AppError);
+  });
+
   it('should be able to update the password', async () => {
     const user = await fakeUsersRepository.create({
       name: 'John Doe',
@@ -53,19 +70,25 @@ describe('UpdateProfile', () => {
   });
 
   it('should not be able to change to another user email', async () => {
-    const user = await fakeUsersRepository.create({
+    await fakeUsersRepository.create({
       name: 'John Doe',
-      email: 'johndoe@gmail.com',
+      email: 'johndoe@example.com',
       password: '123456',
     });
 
-    const updatedUser = await updateProfile.execute({
-      user_id: user.id,
-      name: 'John doe 2',
-      email: 'johndoe2@gmail.com',
+    const user = await fakeUsersRepository.create({
+      name: 'Test',
+      email: 'test@example.com',
+      password: '123456',
     });
-    expect(updatedUser.name).toBe('John doe 2');
-    expect(updatedUser.email).toBe('johndoe2@gmail.com');
+
+    await expect(
+      updateProfile.execute({
+        user_id: user.id,
+        name: 'John Doe',
+        email: 'johndoe@example.com',
+      }),
+    ).rejects.toBeInstanceOf(AppError);
   });
 
   it('should be able to update the profile', async () => {
@@ -82,5 +105,14 @@ describe('UpdateProfile', () => {
     });
     expect(updatedUser.name).toBe('John doe 2');
     expect(updatedUser.email).toBe('johndoe2@gmail.com');
+  });
+  it('should be able to update the profile from non-existing user', async () => {
+    await expect(
+      updateProfile.execute({
+        user_id: 'non-existing id',
+        name: 'test',
+        email: 'test@example.com',
+      }),
+    ).rejects.toBeInstanceOf(AppError);
   });
 });
