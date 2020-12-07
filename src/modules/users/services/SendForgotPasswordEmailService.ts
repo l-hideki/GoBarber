@@ -1,7 +1,7 @@
 import { inject, injectable } from 'tsyringe';
 import path from 'path';
 import IMailProvider from '@shared/container/providers/MailProvider/models/IMailProvider';
-import AppError from '@shared/errors/AppErrors';
+import AppError from '@shared/errors/AppError';
 import IUsersRepository from '../repositories/IUsersRepository';
 import IUserTokensRepository from '../repositories/IUserTokensRepository';
 
