@@ -31,7 +31,8 @@
     "ts-jest": "^26.4.4",
     "ts-node-dev": "^1.0.0-pre.57",
     "tsconfig-paths": "^3.9.0",
-    "typescript": "^3.9.7"
+    "typescript": "^3.9.7",
+    "@types/mongodb": "^3.6.2"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
