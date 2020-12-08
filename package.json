@@ -16,6 +16,7 @@
     "@types/express": "^4.17.7",
     "@types/jest": "^26.0.15",
     "@types/jsonwebtoken": "^8.5.0",
+    "@types/mongodb": "^3.6.2",
     "@types/multer": "^1.4.4",
     "@types/nodemailer": "^6.4.0",
     "@typescript-eslint/eslint-plugin": "^3.10.1",
@@ -31,11 +32,11 @@
     "ts-jest": "^26.4.4",
     "ts-node-dev": "^1.0.0-pre.57",
     "tsconfig-paths": "^3.9.0",
-    "typescript": "^3.9.7",
-    "@types/mongodb": "^3.6.2"
+    "typescript": "^3.9.7"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "celebrate": "^13.0.4",
     "cors": "^2.8.5",
     "date-fns": "^2.16.0",
     "express": "^4.17.1",
