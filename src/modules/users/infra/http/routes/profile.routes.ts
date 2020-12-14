@@ -7,8 +7,8 @@ import ensureAuthenticated from '../middlewares/ensureAuthenticated';
 const profileRouter = Router();
 const profileController = new ProfileController();
 
-//  POST http://localhost:3333/appointments
 profileRouter.use(ensureAuthenticated);
+profileRouter.get('/', profileController.show);
 profileRouter.put(
   '/',
   celebrate({

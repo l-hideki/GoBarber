@@ -11,7 +11,6 @@ const upload = multer(uploadConfig.multer);
 const usersController = new UsersController();
 const userAvatarController = new UserAvatarController();
 
-//  POST http://localhost:3333/appointments
 usersRouter.post(
   '/',
   celebrate({
